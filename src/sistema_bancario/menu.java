@@ -14,7 +14,7 @@ public class menu {
 	
 	public void listarContas() {};
 	
-	public void calcularTributos() {};
+	public void calcularTributosTotal() {};
 	
 	public static void menu() {
 		
@@ -32,7 +32,7 @@ public class menu {
 					3 - realizar Saque
 					4 - Realizar Tranferência
 					5 - Listar Contas
-					6 - Calcular Tributos
+					6 - Calcular Total de Tributos
 					7 - Sair
 					
 					Selecione a opção que deseja:  
