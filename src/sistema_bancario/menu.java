@@ -9,8 +9,8 @@ public class menu {
 	static ArrayList<Conta> contas = new ArrayList<>();//arraylist para guardar lista de contas
 	
 	public static void realizarDeposito(int num, double valor) {
-		for (Conta conta : contas) {
-			if (conta.getNumConta() == num) {
+		for (Conta conta : contas) { 			//percorrer lista de contas
+			if (conta.getNumConta() == num) {	//procurar conta pelo número
 				conta.depositar(valor);
 			}else {
 				System.out.printf("Não foi possível encontrar a conta %d%n", num);
@@ -58,7 +58,7 @@ public class menu {
 			
 			switch (opcao) {
 			
-			case 1:
+			case 1:  // criar conta
 				System.out.println("""
 						===============================
 							Criar Nova Conta
@@ -98,7 +98,7 @@ public class menu {
 				}
 				break; //sair/finalizar a opçao 1
 				
-			case 2:
+			case 2:  //depositar
 				System.out.println("""
 						===============================
 							Depositar
