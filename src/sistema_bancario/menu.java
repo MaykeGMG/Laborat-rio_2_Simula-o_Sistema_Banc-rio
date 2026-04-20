@@ -16,12 +16,13 @@ public class menu {
 			for (Conta conta : contas) { 			//percorrer lista de contas
 				if (conta.getNumConta() == num) {	//procurar conta pelo número
 					conta.depositar(valor);
+					break;
 				}else {
 					System.out.printf("Não foi possível encontrar a conta %d%n", num);
 				}
 			}			
 		}
-	}
+	};
 	
 	public static void realizarSaque(int num, double valor) {
 		if (valor <= 0) {							//testar valor negativo ou nulo
@@ -30,6 +31,7 @@ public class menu {
 			for (Conta conta : contas) {			//percorrer contas
 				if (conta.getNumConta() == num) {	//procurar conta pelo número
 					conta.sacar(valor);
+					break;
 				}else {
 					System.out.printf("Não foi possível encontrar a conta %d%n", num);
 				}
@@ -37,12 +39,40 @@ public class menu {
 		}
 	};
 	
-	public static void realizarTransferencia() {
-		
+	public static Conta buscarConta(int num) { //método auxiliar par buscar a conta na lista pelo número
+		for (Conta conta : contas) {
+			if (conta.getNumConta() == num) {
+				return conta;
+			}
+		}
+		return null;
+	}
+	
+	public static void realizarTransferencia(int num1, int num2, double valor) {
+		if (valor <= 0) {
+	        System.out.println("Valor inválido!");
+	        return;
+	    }
+
+	    Conta origem = buscarConta(num1);
+	    Conta destino = buscarConta(num2);
+
+	    if (origem == null) {
+	        System.out.printf("Conta de origem %d não encontrada!%n", num1);
+	    } else if (destino == null) {
+	        System.out.printf("Conta de destino %d não encontrada!%n", num2);
+	    } else if (origem == destino) {
+	        System.out.println("Não é possível transferir para a mesma conta!");
+	    } else {
+	        origem.transferencia(destino, valor);
+	    }
 	};
 	
 	public static void listarContas() {
-		
+		for (Conta conta : contas) {
+			conta.getInfo();
+			System.out.println("\n");
+		}
 	};
 	
 	public static void calcularTributosTotal() {
@@ -146,15 +176,36 @@ public class menu {
 				realizarSaque(numSaque, valorSaque);
 				break;//sair/finalizar a opçao 3
 				
-			case 4:
-				realizarTransferencia();
+			case 4: //transferir
+				System.out.println("""
+						===============================
+							Transferência
+								
+						Informe número conta de origem:  
+						""");
+				int num1 = leitor.nextInt();
+				
+				System.out.println("Informe o número da conta de destino:");
+				int num2 = leitor.nextInt();
+				
+				System.out.println("Informe valor que deseja Trnasferir:\n");
+				double valorTransferencia = leitor.nextDouble();
+				leitor.nextLine();
+				
+				realizarTransferencia(num1, num2, valorTransferencia);
 				break;//sair/finalizar a opçao 4
 				
-			case 5:
+			case 5: //impimir liesta de contas
+				System.out.println("""
+						===============================
+							Lista de contas  
+						""");
+				
 				listarContas();
 				break;//sair/finalizar a opçao 5
 				
-			case 6:
+			case 6: // calcular soma de tributos das contas
+				
 				calcularTributosTotal();
 				break;//sair/finalizar a opçao 6
 				

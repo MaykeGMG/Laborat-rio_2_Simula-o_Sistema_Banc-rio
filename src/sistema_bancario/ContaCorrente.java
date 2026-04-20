@@ -26,6 +26,12 @@ public class ContaCorrente extends Conta implements ITributavel{
 			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n	Valor necessário para esta trnasferência: %.2fR$%n", this.saldo, (valor * 1.05));
 		}
 	}
+	
+	@Override
+	public void getInfo() {
+		super.getInfo();
+		System.out.println("Tipo - Conta Corrente");
+	}
 
 	@Override
 	public double calculaTributo() { //método de cálculo de tributo da conta

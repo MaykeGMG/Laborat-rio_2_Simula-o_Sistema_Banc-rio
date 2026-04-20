@@ -28,5 +28,11 @@ public class ContaPoupanca extends Conta {
 		}
 
 	}
+	
+	@Override
+	public void getInfo() {
+		super.getInfo();
+		System.out.println("Tipo - Conta Poupança\n");
+	}
 
 }
