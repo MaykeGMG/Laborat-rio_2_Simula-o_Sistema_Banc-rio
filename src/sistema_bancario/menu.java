@@ -9,17 +9,32 @@ public class menu {
 	static ArrayList<Conta> contas = new ArrayList<>();//arraylist para guardar lista de contas
 	
 	public static void realizarDeposito(int num, double valor) {
-		for (Conta conta : contas) { 			//percorrer lista de contas
-			if (conta.getNumConta() == num) {	//procurar conta pelo número
-				conta.depositar(valor);
-			}else {
-				System.out.printf("Não foi possível encontrar a conta %d%n", num);
+		
+		if (valor <= 0) {							//testar valor negativo ou nulo
+			System.out.println("Valor inválido!");
+		}else {
+			for (Conta conta : contas) { 			//percorrer lista de contas
+				if (conta.getNumConta() == num) {	//procurar conta pelo número
+					conta.depositar(valor);
+				}else {
+					System.out.printf("Não foi possível encontrar a conta %d%n", num);
+				}
+			}			
+		}
+	}
+	
+	public static void realizarSaque(int num, double valor) {
+		if (valor <= 0) {							//testar valor negativo ou nulo
+			System.out.println("Valor inválido!");
+		}else {
+			for (Conta conta : contas) {			//percorrer contas
+				if (conta.getNumConta() == num) {	//procurar conta pelo número
+					conta.sacar(valor);
+				}else {
+					System.out.printf("Não foi possível encontrar a conta %d%n", num);
+				}
 			}
 		}
-	};
-	
-	public static void realizarSaque() {
-		
 	};
 	
 	public static void realizarTransferencia() {
@@ -93,7 +108,8 @@ public class menu {
 					}
 					
 					contas.add(novaConta); //adiciona objeto ao arraylist
-					System.out.println("Conta criada com sucesso!");
+					System.out.println("Conta criada com sucesso!\n");
+					novaConta.getInfo();
 					break; //sair do laço while(true)
 				}
 				break; //sair/finalizar a opçao 1
@@ -103,26 +119,49 @@ public class menu {
 						===============================
 							Depositar
 								
-						Informe o nome do titular da nova conta:  
+						Informe número conta:  
 						""");
-				int num = leitor.nextInt();
+				int numDeposito = leitor.nextInt();
 				
-				System.out.println("Informe o numero da conta em que deseja realizar o depósito");
-				double valor = leitor.nextDouble();
+				System.out.println("Informe valor que deseja depositar");
+				double valorDeposito = leitor.nextDouble();
 				leitor.nextLine();
 				
-				realizarDeposito(num, valor);
-			case 3:
-				realizarSaque();
+				realizarDeposito(numDeposito, valorDeposito);
+				break;//sair/finalizar a opçao 2
+				
+			case 3:  //sacar
+				System.out.println("""
+						===============================
+							sacar
+								
+						Informe número conta:  
+						""");
+				int numSaque = leitor.nextInt();
+				
+				System.out.println("Informe valor que deseja sacar");
+				double valorSaque = leitor.nextDouble();
+				leitor.nextLine();
+				
+				realizarSaque(numSaque, valorSaque);
+				break;//sair/finalizar a opçao 3
+				
 			case 4:
 				realizarTransferencia();
+				break;//sair/finalizar a opçao 4
+				
 			case 5:
 				listarContas();
+				break;//sair/finalizar a opçao 5
+				
 			case 6:
 				calcularTributosTotal();
+				break;//sair/finalizar a opçao 6
+				
 			case 7:
 				System.out.println("Fechando.");
-				break;
+				break;//sair/finalizar menu
+				
 			default:
 				System.out.println("Opção inválida");
 		        break;

@@ -20,10 +20,15 @@ public abstract class Conta {
 	
 	public void depositar(double valor) {// método de depósito
 		this.saldo += valor;
+		System.out.println("Depósito efetuado!");
 	};
 	
 	public int getNumConta() { //getter do número da conta
 		return this.numConta;
+	}
+	
+	public void getInfo() { //exibir informações da conta
+		System.out.printf("Informações da conta:%nNúmero da conta: %d%nTitular: %s%nSaldo: %.2fR$%n", this.numConta, this.titular, this.saldo);
 	}
 	
 	//métodos abstratos
