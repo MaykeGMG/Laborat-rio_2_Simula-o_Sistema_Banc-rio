@@ -11,21 +11,22 @@ public abstract class Conta {
 	public Conta(double saldo, String titular) { //construtor
 		this.saldo = saldo;
 		this.titular = titular;
-		this.numConta = gerarNum(numeroContas);
+		this.numConta = gerarNum();
 	}
 	
-	private int gerarNum(int numero) { //método para atrubuir valor único da conta
+	private int gerarNum() { //método para atrubuir valor único da conta
 		return ++numeroContas;
 	}
 	
-	public void depositar(double valor) {
+	public void depositar(double valor) {// método de depósito
 		this.saldo += valor;
 	};
 	
-	public int getNumConta() {
+	public int getNumConta() { //getter do número da conta
 		return this.numConta;
 	}
 	
+	//métodos abstratos
 	public abstract void sacar(double num);
 	
 	public abstract void transferencia(Conta destino, double num);	

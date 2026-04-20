@@ -17,7 +17,7 @@ public class ContaCorrente extends Conta implements ITributavel{
 	}
 
 	@Override
-	public void transferencia(Conta destino, double valor) { //método de transferencia
+	public void transferencia(Conta destino, double valor) { //método de transferencia considerando a mesma taxa do saque
 		if(this.saldo >= valor*1.05) {
 			sacar(valor);
 			destino.depositar(valor);
