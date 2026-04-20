@@ -11,6 +11,7 @@ public class ContaCorrente extends Conta implements ITributavel{
 		if (this.saldo < num*1.05) {
 			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n	Valor necessário: %.2fR$%n", this.saldo, (num * 1.05));
 		}else {
+			System.out.println("Saque efetuado!");
 			this.saldo -= num*1.05;
 		}
 	}

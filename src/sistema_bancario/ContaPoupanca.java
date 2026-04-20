@@ -9,7 +9,12 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public void sacar(double num) {
-		// TODO Auto-generated method stub
+		if (this.saldo < num) {
+			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n", this.saldo);
+		}else {
+			System.out.println("Saque efetuado!");
+			this.saldo -= num;
+		}
 
 	}
 
