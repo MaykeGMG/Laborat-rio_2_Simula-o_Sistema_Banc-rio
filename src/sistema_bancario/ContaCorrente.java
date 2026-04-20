@@ -11,7 +11,7 @@ public class ContaCorrente extends Conta implements ITributavel{
 		if (this.saldo < num*1.05) {
 			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n	Valor necessário: %.2fR$%n", this.saldo, (num * 1.05));
 		}else {
-			System.out.println("Saque efetuado!");
+			System.out.println("Saque efetuado!\n");
 			this.saldo -= num*1.05;
 		}
 	}
@@ -21,7 +21,7 @@ public class ContaCorrente extends Conta implements ITributavel{
 		if(this.saldo >= valor*1.05) {
 			sacar(valor);
 			destino.depositar(valor);
-			System.out.println("Transferência finalizada com sucesso!");
+			System.out.println("Transferência finalizada com sucesso!\n");
 		}else {
 			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n	Valor necessário para esta trnasferência: %.2fR$%n", this.saldo, (valor * 1.05));
 		}
@@ -30,7 +30,7 @@ public class ContaCorrente extends Conta implements ITributavel{
 	@Override
 	public void getInfo() {
 		super.getInfo();
-		System.out.println("Tipo - Conta Corrente");
+		System.out.println("Tipo - Conta Corrente\n");
 	}
 
 	@Override

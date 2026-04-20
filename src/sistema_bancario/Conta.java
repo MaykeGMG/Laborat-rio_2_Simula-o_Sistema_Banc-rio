@@ -20,7 +20,7 @@ public abstract class Conta {
 	
 	public void depositar(double valor) {// método de depósito
 		this.saldo += valor;
-		System.out.println("Depósito efetuado!");
+		System.out.println("Depósito efetuado!\n");
 	};
 	
 	public int getNumConta() { //getter do número da conta

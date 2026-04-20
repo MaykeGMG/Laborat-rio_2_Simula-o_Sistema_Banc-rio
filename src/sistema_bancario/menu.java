@@ -62,7 +62,7 @@ public class menu {
 	    } else if (destino == null) {
 	        System.out.printf("Conta de destino %d não encontrada!%n", num2);
 	    } else if (origem == destino) {
-	        System.out.println("Não é possível transferir para a mesma conta!");
+	        System.out.println("Não é possível transferir para a mesma conta!\n");
 	    } else {
 	        origem.transferencia(destino, valor);
 	    }
@@ -71,7 +71,6 @@ public class menu {
 	public static void listarContas() {
 		for (Conta conta : contas) {
 			conta.getInfo();
-			System.out.println("\n");
 		}
 	};
 	
@@ -86,7 +85,7 @@ public class menu {
 			}
 		}
 		
-		System.out.printf("Total de tributos a recolher: %.2fR$%n", total);
+		System.out.printf("Total de tributos a recolher: %.2fR$%n%n", total);
 	};
 	
 	public static void menu() {
@@ -122,14 +121,13 @@ public class menu {
 						""");
 				String nome = leitor.nextLine(); //leitura do nome
 				
-				System.out.println("Informe o saldo:  ");
+				System.out.println("Informe o saldo:\n");
 				double saldo = leitor.nextDouble(); //leitura do saldo
 				
 				System.out.println("""
 						informe o tipo da conta
 						Conta Corrente - 1
 						Conta Poupança - 2
-						
 						""");
 				while (true) {
 					
@@ -163,7 +161,7 @@ public class menu {
 						""");
 				int numDeposito = leitor.nextInt();
 				
-				System.out.println("Informe valor que deseja depositar");
+				System.out.println("Informe valor que deseja depositar: \n");
 				double valorDeposito = leitor.nextDouble();
 				leitor.nextLine();
 				
@@ -179,7 +177,7 @@ public class menu {
 						""");
 				int numSaque = leitor.nextInt();
 				
-				System.out.println("Informe valor que deseja sacar");
+				System.out.println("Informe valor que deseja sacar:\n");
 				double valorSaque = leitor.nextDouble();
 				leitor.nextLine();
 				
@@ -195,7 +193,7 @@ public class menu {
 						""");
 				int num1 = leitor.nextInt();
 				
-				System.out.println("Informe o número da conta de destino:");
+				System.out.println("Informe o número da conta de destino:\n");
 				int num2 = leitor.nextInt();
 				
 				System.out.println("Informe valor que deseja Trnasferir:\n");
@@ -225,7 +223,7 @@ public class menu {
 				break;//sair/finalizar a opçao 6
 				
 			case 7:
-				System.out.println("Fechando.");
+				System.out.println("Encerrando aplicação.\n");
 				break;//sair/finalizar menu
 				
 			default:

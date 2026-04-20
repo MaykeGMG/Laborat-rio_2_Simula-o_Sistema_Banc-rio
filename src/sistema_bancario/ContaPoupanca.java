@@ -11,7 +11,7 @@ public class ContaPoupanca extends Conta {
 		if (this.saldo < num) {
 			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n", this.saldo);
 		}else {
-			System.out.println("Saque efetuado!");
+			System.out.println("Saque efetuado!\n");
 			this.saldo -= num;
 		}
 
@@ -22,7 +22,7 @@ public class ContaPoupanca extends Conta {
 		if(this.saldo >= valor) {
 			sacar(valor);
 			destino.depositar(valor);
-			System.out.println("Transferência finalizada com sucesso!");
+			System.out.println("Transferência finalizada com sucesso!\n");
 		}else {
 			System.out.printf("Saldo insuficiente para trnasferência!%n	Saldo atual: %.2fR$%n", this.saldo);
 		}
