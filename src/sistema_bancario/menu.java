@@ -77,6 +77,16 @@ public class menu {
 	
 	public static void calcularTributosTotal() {
 		
+		double total = 0;
+		
+		for (Conta conta : contas) {
+			
+			if (conta instanceof ITributavel) {
+				total += ((ITributavel) conta).calculaTributo();
+			}
+		}
+		
+		System.out.printf("Total de tributos a recolher: %.2fR$%n", total);
 	};
 	
 	public static void menu() {
@@ -106,7 +116,7 @@ public class menu {
 			case 1:  // criar conta
 				System.out.println("""
 						===============================
-							Criar Nova Conta
+							CRIAR NOVA CONTA
 								
 						Informe o nome do titular da nova conta:  
 						""");
@@ -147,7 +157,7 @@ public class menu {
 			case 2:  //depositar
 				System.out.println("""
 						===============================
-							Depositar
+							DEPÓSITO
 								
 						Informe número conta:  
 						""");
@@ -163,7 +173,7 @@ public class menu {
 			case 3:  //sacar
 				System.out.println("""
 						===============================
-							sacar
+							SAQUE
 								
 						Informe número conta:  
 						""");
@@ -179,7 +189,7 @@ public class menu {
 			case 4: //transferir
 				System.out.println("""
 						===============================
-							Transferência
+							TRANSFRÊNCIA
 								
 						Informe número conta de origem:  
 						""");
@@ -198,14 +208,19 @@ public class menu {
 			case 5: //impimir liesta de contas
 				System.out.println("""
 						===============================
-							Lista de contas  
+							LISTA DE CONTAS  
 						""");
 				
 				listarContas();
 				break;//sair/finalizar a opçao 5
 				
 			case 6: // calcular soma de tributos das contas
-				
+				System.out.println("""
+						===============================
+						  TOTAL DE TRIBUTOS A RECOLHER
+								
+						Informe número conta de origem:  
+						""");
 				calcularTributosTotal();
 				break;//sair/finalizar a opçao 6
 				
