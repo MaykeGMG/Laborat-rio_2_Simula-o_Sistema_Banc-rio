@@ -22,8 +22,12 @@ public abstract class Conta {
 		this.saldo += valor;
 	};
 	
+	public int getNumConta() {
+		return this.numConta;
+	}
+	
 	public abstract void sacar(double num);
 	
-	public abstract void transferencia();	
+	public abstract void transferencia(Conta destino, double num);	
 
 }

@@ -2,12 +2,12 @@ package sistema_bancario;
 
 public class ContaCorrente extends Conta implements ITributavel{
 
-	public ContaCorrente(double saldo, String titular) {
-		super(saldo, titular);
+	public ContaCorrente(double saldo, String titular) { //construtor
+		super(saldo, titular); //construtor herdado da superclasse
 	}
 
 	@Override
-	public void sacar(double num) {
+	public void sacar(double num) { //método de saque com taxa
 		if (this.saldo < num*1.05) {
 			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n	Valor necessário: %.2fR$%n", this.saldo, (num * 1.05));
 		}else {
@@ -17,12 +17,18 @@ public class ContaCorrente extends Conta implements ITributavel{
 	}
 
 	@Override
-	public void transferencia() {
-
+	public void transferencia(Conta destino, double valor) { //método de transferencia
+		if(this.saldo >= valor*1.05) {
+			sacar(valor);
+			destino.depositar(valor);
+			System.out.println("Transferência efetuada!");
+		}else {
+			System.out.printf("Saldo insuficiente!%n	Saldo atual: %.2fR$%n	Valor necessário para esta trnasferência: %.2fR$%n", this.saldo, (valor * 1.05));
+		}
 	}
 
 	@Override
-	public double calculaTributo() {
+	public double calculaTributo() { //método de cálculo de tributo da conta
 		double tributo = 0;
 		tributo = this.saldo * 0.01;
 		return tributo;
