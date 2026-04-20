@@ -8,8 +8,14 @@ public class menu {
 	static Scanner leitor = new Scanner(System.in);//scnner para entrada de dados
 	static ArrayList<Conta> contas = new ArrayList<>();//arraylist para guardar lista de contas
 	
-	public static void realizarDeposito() {
-		
+	public static void realizarDeposito(int num, double valor) {
+		for (Conta conta : contas) {
+			if (conta.getNumConta() == num) {
+				conta.depositar(valor);
+			}else {
+				System.out.printf("Não foi possível encontrar a conta %d%n", num);
+			}
+		}
 	};
 	
 	public static void realizarSaque() {
@@ -55,7 +61,7 @@ public class menu {
 			case 1:
 				System.out.println("""
 						===============================
-								Criar Nova Conta
+							Criar Nova Conta
 								
 						Informe o nome do titular da nova conta:  
 						""");
@@ -73,6 +79,8 @@ public class menu {
 				while (true) {
 					
 					int tipo = leitor.nextInt(); //leitura do tipo de conta
+					leitor.nextLine();
+					
 					Conta novaConta = null; //instanciando objeto da conta 
 					
 					if (tipo == 1) {
@@ -91,7 +99,19 @@ public class menu {
 				break; //sair/finalizar a opçao 1
 				
 			case 2:
-				realizarDeposito();
+				System.out.println("""
+						===============================
+							Depositar
+								
+						Informe o nome do titular da nova conta:  
+						""");
+				int num = leitor.nextInt();
+				
+				System.out.println("Informe o numero da conta em que deseja realizar o depósito");
+				double valor = leitor.nextDouble();
+				leitor.nextLine();
+				
+				realizarDeposito(num, valor);
 			case 3:
 				realizarSaque();
 			case 4:
