@@ -1,29 +1,39 @@
 package sistema_bancario;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class menu {
 	
-	public void criarConta() {};
+	static Scanner leitor = new Scanner(System.in);//scnner para entrada de dados
+	static ArrayList<Conta> contas = new ArrayList<>();//arraylist para guardar lista de contas
 	
-	public void realizarDeposito() {};
+	public static void realizarDeposito() {
+		
+	};
 	
-	public void realizarSaque() {};
+	public static void realizarSaque() {
+		
+	};
 	
-	public void realizarTransferencia() {};
+	public static void realizarTransferencia() {
+		
+	};
 	
-	public void listarContas() {};
+	public static void listarContas() {
+		
+	};
 	
-	public void calcularTributosTotal() {};
+	public static void calcularTributosTotal() {
+		
+	};
 	
 	public static void menu() {
 		
-		Scanner leitor = new Scanner(System.in);//declaração de um scner para entrada de dados
 		
 		int opcao;//variavel de escolha da funcionalidade
 		
-		do {
-			opcao = leitor.nextInt();
+		do { 							//loop do menu
 			
 			System.out.println("""
 					================================
@@ -37,20 +47,59 @@ public class menu {
 					
 					Selecione a opção que deseja:  
 					""");
+			opcao = leitor.nextInt();
+			leitor.nextLine();  //limpar o \n do buffer
 			
 			switch (opcao) {
+			
 			case 1:
+				System.out.println("""
+						===============================
+								Criar Nova Conta
+								
+						Informe o nome do titular da nova conta:  
+						""");
+				String nome = leitor.nextLine(); //leitura do nome
+				
+				System.out.println("Informe o saldo:  ");
+				double saldo = leitor.nextDouble(); //leitura do saldo
+				
+				System.out.println("""
+						informe o tipo da conta
+						Conta Corrente - 1
+						Conta Poupança - 2
+						
+						""");
+				while (true) {
+					
+					int tipo = leitor.nextInt(); //leitura do tipo de conta
+					Conta novaConta = null; //instanciando objeto da conta 
+					
+					if (tipo == 1) {
+						novaConta = new ContaCorrente(saldo, nome); //criando objeto da conta corrente
+					}else if(tipo == 2) {
+						novaConta = new ContaPoupanca(saldo, nome); //criando objeto da conta poupança
+					}else {
+						System.out.println("Valor invpalido!");
+						continue;
+					}
+					
+					contas.add(novaConta); //adiciona objeto ao arraylist
+					System.out.println("Conta criada com sucesso!");
+					break; //sair do laço while(true)
+				}
+				break; //sair/finalizar a opçao 1
 				
 			case 2:
-				
+				realizarDeposito();
 			case 3:
-				
+				realizarSaque();
 			case 4:
-				
+				realizarTransferencia();
 			case 5:
-			
+				listarContas();
 			case 6:
-			
+				calcularTributosTotal();
 			case 7:
 				System.out.println("Fechando.");
 				break;
