@@ -12,30 +12,30 @@ public class menu {
 		
 		if (valor <= 0) {							//testar valor negativo ou nulo
 			System.out.println("Valor inválido!");
+			return;
+		}
+		
+		Conta c1 = buscarConta(num);		//buscar conta na lista
+		
+		if (c1 != null) {
+			c1.depositar(valor);
 		}else {
-			for (Conta conta : contas) { 			//percorrer lista de contas
-				if (conta.getNumConta() == num) {	//procurar conta pelo número
-					conta.depositar(valor);
-					break;
-				}else {
-					System.out.printf("Não foi possível encontrar a conta %d%n", num);
-				}
-			}			
+			System.out.printf("Não foi possível encontrar a conta %d%n", num);
 		}
 	};
 	
 	public static void realizarSaque(int num, double valor) {
 		if (valor <= 0) {							//testar valor negativo ou nulo
 			System.out.println("Valor inválido!");
+			return;
+		}
+		
+		Conta c1 = buscarConta(num);		//buscar conta na lista
+		
+		if (c1 != null) {
+			c1.sacar(valor);
 		}else {
-			for (Conta conta : contas) {			//percorrer contas
-				if (conta.getNumConta() == num) {	//procurar conta pelo número
-					conta.sacar(valor);
-					break;
-				}else {
-					System.out.printf("Não foi possível encontrar a conta %d%n", num);
-				}
-			}
+			System.out.printf("Não foi possível encontrar a conta %d%n", num);
 		}
 	};
 	
