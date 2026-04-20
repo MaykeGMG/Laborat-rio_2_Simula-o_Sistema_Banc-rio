@@ -1,10 +1,10 @@
 package sistema_bancario;
 
-public abstract class ContaBancaria {
+public abstract class Conta {
 	protected int id;
 	
 
-	public ContaBancaria() {
+	public Conta() {
 		// TODO Auto-generated constructor stub
 	}
 
